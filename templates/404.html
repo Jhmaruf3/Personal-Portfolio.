@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+  Bilingual 404 page. Self-contained: it has its own small translations
+  object instead of the full dictionary used on the homepage, so it works
+  even if the visitor lands here directly. English is the default text.
+-->
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Maruf Mohammad Jubayer Hossen</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body class="body-404">
+  <main class="not-found" id="main">
+    <p class="not-found__code" aria-hidden="true">404</p>
+    <h1 class="not-found__title" data-i18n="nf.title">Page not found</h1>
+    <p class="not-found__text" data-i18n="nf.text">
+      The page you're looking for doesn't exist or may have moved.
+    </p>
+    <a class="btn btn--primary" href="{{ url_for('index') }}" data-i18n="nf.back">Back to Home</a>
+
+    <div class="lang-switch not-found__lang" role="group" aria-label="Language / 语言">
+      <button type="button" class="lang-switch__btn is-active" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" class="lang-switch__btn" data-lang="zh" aria-pressed="false">中文</button>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+      var I18N = {
+        en: {
+          "nf.title": "Page not found",
+          "nf.text": "The page you're looking for doesn't exist or may have moved.",
+          "nf.back": "Back to Home",
+        },
+        zh: {
+          "nf.title": "页面未找到",
+          "nf.text": "您访问的页面不存在，或者可能已被移动。",
+          "nf.back": "返回首页",
+        },
+      };
+
+      function applyLanguage(lang) {
+        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+        document.querySelectorAll("[data-i18n]").forEach(function (el) {
+          el.textContent = I18N[lang][el.dataset.i18n] || I18N.en[el.dataset.i18n];
+        });
+        document.querySelectorAll(".lang-switch__btn").forEach(function (btn) {
+          var active = btn.dataset.lang === lang;
+          btn.classList.toggle("is-active", active);
+          btn.setAttribute("aria-pressed", String(active));
+        });
+        try { localStorage.setItem("portfolio-lang", lang); } catch (e) { /* ignore */ }
+      }
+
+      var saved = "en";
+      try {
+        saved = localStorage.getItem("portfolio-lang") || "en";
+      } catch (e) { /* ignore */ }
+      applyLanguage(saved === "zh" ? "zh" : "en");
+
+      document.querySelectorAll(".lang-switch__btn").forEach(function (btn) {
+        btn.addEventListener("click", function () { applyLanguage(btn.dataset.lang); });
+      });
+    })();
+  </script>
+</body>
+</html>

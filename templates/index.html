@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<!--
+  Personal Portfolio — Maruf Mohammad Jubayer Hossen
+  Bilingual (English / Simplified Chinese) single-page site.
+  The default text in this file is ENGLISH, so the page stays readable
+  even if JavaScript is disabled. main.js swaps text when the visitor
+  picks 中文. Every translatable element carries a data-i18n key.
+-->
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <!-- If JS runs, swap "no-js" for "js" so scroll-reveal styles activate.
+       Without JS, the page simply shows all content (no hiding). -->
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title">Maruf Mohammad Jubayer Hossen — Portfolio</title>
+  <meta name="description" data-i18n="meta.description"
+        content="Portfolio of Maruf Mohammad Jubayer Hossen — Computer Science & Technology student at Taizhou University, China.">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- ============ Intro loader (~1.4s). Pure-CSS fallback fades it out even without JS. ============ -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__mark">MJH</div>
+    <div class="loader__line"><span></span></div>
+  </div>
+
+  <a class="skip-link" href="#main" data-i18n="skip.text">Skip to content</a>
+
+  <!-- ================================================= HEADER / NAV ================================================= -->
+  <header class="site-header" id="site-header">
+    <div class="container header__inner">
+      <a class="wordmark" href="#home" aria-label="Maruf Mohammad Jubayer Hossen — home">
+        <span class="wordmark__dot" aria-hidden="true"></span>Maruf<span class="wordmark__thin">Hossen</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <ul class="main-nav__list">
+          <li><a class="nav-link" href="#home"    data-i18n="nav.home">Home</a></li>
+          <li><a class="nav-link" href="#about"   data-i18n="nav.about">About</a></li>
+          <li><a class="nav-link" href="#skills"  data-i18n="nav.skills">Skills</a></li>
+          <li><a class="nav-link" href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a class="nav-link" href="#experience" data-i18n="nav.experience">Experience</a></li>
+          <li><a class="nav-link" href="#achievements" data-i18n="nav.achievements">Achievements</a></li>
+          <li><a class="nav-link" href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <!-- Language switcher: EN (default) / 简体中文 -->
+        <div class="lang-switch" role="group" aria-label="Language / 语言">
+          <button type="button" class="lang-switch__btn is-active" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" class="lang-switch__btn" data-lang="zh" aria-pressed="false">中文</button>
+        </div>
+        <!-- Mobile menu toggle -->
+        <button type="button" class="menu-toggle" id="menu-toggle"
+                aria-expanded="false" aria-controls="main-nav"
+                data-i18n-aria="nav.menuOpen" aria-label="Open menu">
+          <span class="menu-toggle__bar" aria-hidden="true"></span>
+          <span class="menu-toggle__bar" aria-hidden="true"></span>
+          <span class="menu-toggle__bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ==================================================== HERO ==================================================== -->
+    <section class="hero" id="home">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="hero__greeting" data-i18n="hero.greeting">Hello, I'm</p>
+          <h1 class="hero__name" data-i18n="hero.name">Maruf Mohammad Jubayer Hossen</h1>
+          <p class="hero__role" data-i18n="hero.role">Computer Science &amp; Technology Student · Aspiring Software Developer</p>
+          <p class="hero__intro" data-i18n="hero.intro">
+            Fourth-year CS student from Bangladesh studying in China. I build with Python, Flask and modern
+            web technologies — with a growing focus on data science and machine learning.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#projects" data-i18n="hero.ctaProjects">View My Projects</a>
+            <a class="btn btn--ghost" href="#contact" data-i18n="hero.ctaContact">Contact Me</a>
+          </div>
+          <ul class="hero__social" aria-label="Social links">
+            <li>
+              <a class="social-link" href="https://github.com/Jhmaruf3" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.69 1.25 3.34.95.1-.74.4-1.25.72-1.53-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11.1 11.1 0 0 1 5.78 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.27 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+                <span class="sr-only">GitHub</span>
+              </a>
+            </li>
+            <li>
+              <a class="social-link" href="mailto:jhmaruf08@gmail.com">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.24-8 5-8-5V6.5l8 5 8-5v1.74Z"/></svg>
+                <span class="sr-only">Email</span>
+              </a>
+            </li>
+            <!--
+              LinkedIn placeholder — the CV only lists a generic LinkedIn URL.
+              To show this button, open static/js/main.js and set LINKEDIN_URL
+              to your real profile URL (e.g. "https://www.linkedin.com/in/your-handle").
+            -->
+            <li id="linkedin-li">
+              <a class="social-link" id="linkedin-link" href="#" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+                <span class="sr-only">LinkedIn</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="hero__photo-wrap">
+          <div class="hero__photo-ring" aria-hidden="true"></div>
+          <img class="hero__photo" src="{{ url_for('static', filename='images/profile.jpg') }}"
+               alt="Portrait of Maruf Mohammad Jubayer Hossen" data-i18n-alt="hero.photoAlt"
+               width="480" height="640" fetchpriority="high">
+        </div>
+      </div>
+      <a class="hero__scroll" href="#about" aria-hidden="true" tabindex="-1"><span></span></a>
+    </section>
+
+    <!-- ==================================================== ABOUT ==================================================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="about.eyebrow">About Me</p>
+          <h2 class="section__title" data-i18n="about.title">A student developer between two cultures</h2>
+        </div>
+        <div class="about__grid">
+          <div class="about__body reveal">
+            <p data-i18n="about.p1">
+              I'm a dedicated fourth-year Computer Science and Technology student at Taizhou University, China,
+              originally from Bangladesh. I'm passionate about software development, with hands-on experience in
+              Python, web development and data science, and a strong foundation in data structures, databases and
+              object-oriented programming.
+            </p>
+            <p data-i18n="about.p2">
+              Living and studying abroad has shaped how I work: I communicate across cultures, adapt quickly to new
+              environments and enjoy collaborating in multicultural teams — skills I've built through university
+              activities and competitions in China. I'm a quick learner with a strong sense of responsibility, and
+              I'm looking to apply my technical knowledge in a professional environment.
+            </p>
+          </div>
+          <div class="about__facts reveal">
+            <h3 class="about__facts-title" data-i18n="about.factsTitle">Quick facts</h3>
+            <ul class="facts">
+              <li class="fact">
+                <span class="fact__label" data-i18n="about.locLabel">Location</span>
+                <span class="fact__value" data-i18n="about.locValue">Taizhou, Zhejiang, China</span>
+              </li>
+              <li class="fact">
+                <span class="fact__label" data-i18n="about.eduLabel">University</span>
+                <span class="fact__value" data-i18n="edu.university">Taizhou University</span>
+              </li>
+              <li class="fact">
+                <span class="fact__label" data-i18n="about.degreeLabel">Degree</span>
+                <span class="fact__value" data-i18n="edu.degree">B.Sc. Computer Science &amp; Technology</span>
+              </li>
+              <li class="fact">
+                <span class="fact__label">Email</span>
+                <a class="fact__value fact__value--link" href="mailto:jhmaruf08@gmail.com">jhmaruf08@gmail.com</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================== SKILLS ==================================================== -->
+    <section class="section section--tint" id="skills">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="skills.eyebrow">Skills</p>
+          <h2 class="section__title" data-i18n="skills.title">What I work with</h2>
+          <p class="section__lead" data-i18n="skills.intro">
+            Tools and technologies I've used in coursework and projects. Basic-level skills are labelled honestly.
+          </p>
+        </div>
+        <div class="skills__grid">
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title" data-i18n="skills.g1Title">Programming Languages</h3>
+            <ul class="chip-list">
+              <li class="chip">Python</li>
+              <li class="chip">HTML</li>
+              <li class="chip">CSS</li>
+              <li class="chip" data-i18n="skills.js">JavaScript (Basic)</li>
+              <li class="chip">SQL</li>
+              <li class="chip" data-i18n="skills.kotlin">Kotlin (Basic)</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title" data-i18n="skills.g2Title">Tools &amp; Platforms</h3>
+            <ul class="chip-list">
+              <li class="chip">Git &amp; GitHub</li>
+              <li class="chip">VS Code</li>
+              <li class="chip">PyCharm</li>
+              <li class="chip">Jupyter Notebook</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title" data-i18n="skills.g3Title">Domains</h3>
+            <ul class="chip-list">
+              <li class="chip" data-i18n="skills.ds">Data Science</li>
+              <li class="chip" data-i18n="skills.webdev">Web Development</li>
+              <li class="chip" data-i18n="skills.ml">Machine Learning</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title" data-i18n="skills.g4Title">Soft Skills</h3>
+            <ul class="chip-list">
+              <li class="chip" data-i18n="skills.teamwork">Teamwork</li>
+              <li class="chip" data-i18n="skills.adapt">Adaptability</li>
+              <li class="chip" data-i18n="skills.cross">Cross-cultural Communication</li>
+              <li class="chip" data-i18n="skills.quick">Quick Learner</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================== PROJECTS =================================================== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="projects.eyebrow">Projects</p>
+          <h2 class="section__title" data-i18n="projects.title">Featured project</h2>
+        </div>
+
+        <article class="project-card reveal">
+          <div class="project-card__visual">
+            <!-- CSS/SVG concept illustration — clearly labelled, not a real screenshot -->
+            <div class="pv-window" role="img" data-i18n-aria="projects.pvAlt"
+                 aria-label="Concept preview of a tourism data dashboard interface">
+              <div class="pv-topbar">
+                <span class="pv-dot" aria-hidden="true"></span>
+                <span class="pv-dot" aria-hidden="true"></span>
+                <span class="pv-dot" aria-hidden="true"></span>
+                <span class="pv-search" aria-hidden="true"></span>
+              </div>
+              <div class="pv-body">
+                <aside class="pv-sidebar" aria-hidden="true">
+                  <span class="pv-side__item is-on"></span>
+                  <span class="pv-side__item"></span>
+                  <span class="pv-side__item"></span>
+                  <span class="pv-side__item"></span>
+                </aside>
+                <div class="pv-content">
+                  <div class="pv-kpis" aria-hidden="true">
+                    <span class="pv-kpi"><i></i><i></i></span>
+                    <span class="pv-kpi"><i></i><i></i></span>
+                    <span class="pv-kpi"><i></i><i></i></span>
+                  </div>
+                  <div class="pv-chart" aria-hidden="true">
+                    <div class="pv-bars">
+                      <i style="--h:40%"></i><i style="--h:65%"></i><i style="--h:50%"></i>
+                      <i style="--h:80%"></i><i style="--h:58%"></i><i style="--h:90%"></i>
+                      <i style="--h:72%"></i><i style="--h:95%"></i>
+                    </div>
+                    <svg class="pv-line" viewBox="0 0 200 60" preserveAspectRatio="none">
+                      <polyline points="0,48 28,40 56,44 84,30 112,34 140,18 168,24 200,8"
+                                fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="project-card__concept" data-i18n="projects.conceptLabel">
+              Concept preview — illustrative mockup, not a screenshot of the actual application
+            </p>
+          </div>
+          <div class="project-card__body">
+            <p class="project-card__tag" data-i18n="projects.featured">Featured Project</p>
+            <h3 class="project-card__title" data-i18n="projects.pTitle">Tourism Intelligence Dashboard</h3>
+            <p class="project-card__desc" data-i18n="projects.pDesc">
+              A tourism data analysis dashboard that turns raw tourism data into an interactive,
+              insight-driven web experience.
+            </p>
+            <h4 class="project-card__sub" data-i18n="projects.techLabel">Technologies</h4>
+            <ul class="chip-list">
+              <li class="chip chip--accent">Python</li>
+              <li class="chip chip--accent">Flask</li>
+              <li class="chip chip--accent">Pandas</li>
+              <li class="chip chip--accent">Matplotlib</li>
+            </ul>
+            <h4 class="project-card__sub" data-i18n="projects.featuresLabel">Key features</h4>
+            <ul class="feature-list">
+              <li data-i18n="projects.f1">Tourism data analysis and exploration using Python and Pandas</li>
+              <li data-i18n="projects.f2">Predictive analytics powered by machine-learning models</li>
+              <li data-i18n="projects.f3">Interactive charts and data visualizations built with Matplotlib</li>
+              <li data-i18n="projects.f4">Responsive web interface developed with Flask</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Clearly labelled placeholder — remove this block whenever you like -->
+        <div class="more-projects reveal">
+          <p class="more-projects__title" data-i18n="projects.moreTitle">More projects coming soon</p>
+          <p class="more-projects__text" data-i18n="projects.moreText">
+            This area is reserved for future projects — it will be updated as new work is published.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== EXPERIENCE ================================================== -->
+    <section class="section section--tint" id="experience">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="exp.eyebrow">Experience</p>
+          <h2 class="section__title" data-i18n="exp.title">Where I've worked</h2>
+        </div>
+        <article class="exp-card reveal">
+          <div class="exp-card__meta">
+            <h3 class="exp-card__company" data-i18n="exp.company">Creative Digital Agency</h3>
+            <p class="exp-card__role" data-i18n="exp.role">Digital Marketing &amp; Media Team Member</p>
+            <p class="exp-card__type" data-i18n="exp.type">Part-time / Freelance</p>
+            <p class="exp-card__date">2021 – 2022</p>
+          </div>
+          <div class="exp-card__body">
+            <ul class="feature-list">
+              <li data-i18n="exp.b1">Assisted in planning and executing digital marketing campaigns</li>
+              <li data-i18n="exp.b2">Created social media content, promotional materials and marketing strategies</li>
+              <li data-i18n="exp.b3">Worked with team members to improve online brand presence</li>
+              <li data-i18n="exp.b4">Coordinated with clients to understand project requirements</li>
+              <li data-i18n="exp.b5">Supported event promotion and audience engagement</li>
+              <li data-i18n="exp.b6">Contributed graphic and multimedia content for social media platforms</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =================================================== EDUCATION =================================================== -->
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="edu.eyebrow">Education</p>
+          <h2 class="section__title" data-i18n="edu.title">Academic background</h2>
+        </div>
+        <article class="edu-card reveal">
+          <div class="edu-card__meta">
+            <h3 class="edu-card__uni" data-i18n="edu.university">Taizhou University</h3>
+            <p class="edu-card__degree" data-i18n="edu.degree">Bachelor of Computer Science and Technology</p>
+            <p class="edu-card__status" data-i18n="edu.status">4th Year · International Student</p>
+            <p class="edu-card__grad" data-i18n="edu.grad">Expected graduation: 2027</p>
+            <p class="edu-card__date">2023 – 2027</p>
+            <p class="edu-card__place" data-i18n="about.locValue">Taizhou, Zhejiang, China</p>
+          </div>
+          <div class="edu-card__body">
+            <h4 class="edu-card__sub" data-i18n="edu.courses">Relevant coursework</h4>
+            <ul class="chip-list">
+              <li class="chip" data-i18n="courses.ds">Data Structures</li>
+              <li class="chip" data-i18n="courses.db">Database Systems</li>
+              <li class="chip" data-i18n="courses.ai">Artificial Intelligence</li>
+              <li class="chip" data-i18n="courses.os">Operating Systems</li>
+              <li class="chip" data-i18n="courses.cn">Computer Networks</li>
+              <li class="chip" data-i18n="courses.se">Software Engineering</li>
+              <li class="chip" data-i18n="courses.py">Python Programming</li>
+              <li class="chip" data-i18n="courses.web">Web Development</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================================ ACHIEVEMENTS ================================================ -->
+    <section class="section section--tint" id="achievements">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="ach.eyebrow">Achievements</p>
+          <h2 class="section__title" data-i18n="ach.title">Competitions &amp; activities</h2>
+          <p class="section__lead" data-i18n="ach.intro">
+            University competitions and extracurricular involvement in China.
+          </p>
+        </div>
+        <ul class="ach__grid">
+          <li class="ach-card reveal">
+            <span class="ach-card__icon" aria-hidden="true">🏆</span>
+            <p data-i18n="ach.i1">Participated in multiple university-level "Datang Cup" competitions in China</p>
+          </li>
+          <li class="ach-card reveal">
+            <span class="ach-card__icon" aria-hidden="true">✍️</span>
+            <p data-i18n="ach.i2">Participated in a provincial poetry competition</p>
+          </li>
+          <li class="ach-card reveal">
+            <span class="ach-card__icon" aria-hidden="true">🤝</span>
+            <p data-i18n="ach.i3">Taizhou University Student Union — Publicity Department, multicultural teamwork experience</p>
+          </li>
+          <li class="ach-card reveal">
+            <span class="ach-card__icon" aria-hidden="true">🚀</span>
+            <p data-i18n="ach.i4">Participated in the Zhejiang Province E-commerce Innovation Competition</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =================================================== LANGUAGES =================================================== -->
+    <section class="section" id="languages">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="lang.eyebrow">Languages</p>
+          <h2 class="section__title" data-i18n="lang.title">Languages I speak</h2>
+        </div>
+        <ul class="lang__grid">
+          <li class="lang-card reveal">
+            <h3 class="lang-card__name" data-i18n="lang.banglaName">Bangla</h3>
+            <p class="lang-card__level" data-i18n="lang.banglaLevel">Native</p>
+          </li>
+          <li class="lang-card reveal">
+            <h3 class="lang-card__name" data-i18n="lang.englishName">English</h3>
+            <p class="lang-card__level" data-i18n="lang.englishLevel">Working Proficiency</p>
+          </li>
+          <li class="lang-card reveal">
+            <h3 class="lang-card__name" data-i18n="lang.hindiName">Hindi</h3>
+            <p class="lang-card__level" data-i18n="lang.hindiLevel">Conversational</p>
+          </li>
+          <li class="lang-card reveal">
+            <h3 class="lang-card__name" data-i18n="lang.chineseName">Chinese</h3>
+            <p class="lang-card__level" data-i18n="lang.chineseLevel">HSK Level 4</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =================================================== CONTACT =================================================== -->
+    <section class="section section--tint" id="contact">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
+          <h2 class="section__title" data-i18n="contact.title">Let's get in touch</h2>
+          <p class="section__lead" data-i18n="contact.intro">
+            Have a question or an opportunity to discuss? Feel free to reach out.
+          </p>
+        </div>
+
+        <div class="contact__grid">
+          <!-- Direct contact details -->
+          <div class="contact__info reveal">
+            <ul class="contact-list">
+              <li>
+                <span class="contact-list__label" data-i18n="contact.emailLabel">Email</span>
+                <a class="contact-list__value" href="mailto:jhmaruf08@gmail.com">jhmaruf08@gmail.com</a>
+              </li>
+              <li>
+                <span class="contact-list__label" data-i18n="contact.phoneLabel">Phone</span>
+                <a class="contact-list__value" href="tel:+8613255765379">+86-13255765379</a>
+              </li>
+              <li>
+                <span class="contact-list__label" data-i18n="contact.githubLabel">GitHub</span>
+                <a class="contact-list__value" href="https://github.com/Jhmaruf3" target="_blank" rel="noopener">github.com/Jhmaruf3</a>
+              </li>
+              <li>
+                <span class="contact-list__label" data-i18n="about.locLabel">Location</span>
+                <span class="contact-list__value" data-i18n="about.locValue">Taizhou, Zhejiang, China</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact form — server-side validated in app.py -->
+          <div class="contact__form reveal">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <div class="flash-area" role="status" aria-live="polite">
+                  {% for category, message in messages %}
+                    <p class="flash flash--{{ category }}" data-flash="{{ message }}">{{ message }}</p>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+
+            <form id="contact-form" action="{{ url_for('contact') }}" method="post" novalidate>
+              <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+              <!-- Honeypot: humans never see this field; bots that fill it are ignored -->
+              <p class="hp-field" aria-hidden="true">
+                <label for="company_website">Leave this field empty</label>
+                <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+              </p>
+
+              <div class="form-field">
+                <label for="cf-name" data-i18n="contact.name">Name</label>
+                <input type="text" id="cf-name" name="name" maxlength="100" autocomplete="name"
+                       placeholder="Your name" data-i18n-placeholder="contact.namePh" required>
+                <p class="field-error" id="cf-name-error" hidden></p>
+              </div>
+              <div class="form-field">
+                <label for="cf-email" data-i18n="contact.email">Email</label>
+                <input type="email" id="cf-email" name="email" maxlength="254" autocomplete="email"
+                       placeholder="you@example.com" data-i18n-placeholder="contact.emailPh" required>
+                <p class="field-error" id="cf-email-error" hidden></p>
+              </div>
+              <div class="form-field">
+                <label for="cf-message" data-i18n="contact.message">Message</label>
+                <textarea id="cf-message" name="message" rows="5" maxlength="2000"
+                          placeholder="Your message (10–2000 characters)" data-i18n-placeholder="contact.messagePh" required></textarea>
+                <p class="field-error" id="cf-message-error" hidden></p>
+              </div>
+              <button class="btn btn--primary" type="submit" data-i18n="contact.send">Send Message</button>
+              <p class="contact__note" data-i18n="contact.formNote">
+                Local demo: messages are validated and logged, but not emailed unless SMTP is configured (see README).
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================================================== FOOTER ==================================================== -->
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="wordmark" href="#home"><span class="wordmark__dot" aria-hidden="true"></span>Maruf<span class="wordmark__thin">Hossen</span></a>
+        <p class="footer__role" data-i18n="hero.role">Computer Science &amp; Technology Student · Aspiring Software Developer</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <p class="footer__title" data-i18n="footer.navTitle">Navigate</p>
+        <ul>
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__bottom">
+        <p>© <span id="year">2026</span> Maruf Mohammad Jubayer Hossen. <span data-i18n="footer.rights">All rights reserved.</span></p>
+        <p class="footer__built" data-i18n="footer.built">Built with Python &amp; Flask</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Secrets — never commit real credentials
+.env
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+*.swp
